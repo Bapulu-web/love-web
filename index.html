@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I’m Sorry ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+    overflow: hidden;
+    color: white;
+}
+
+/* Floating hearts */
+.hearts span {
+    position: absolute;
+    bottom: -50px;
+    color: rgba(255, 77, 166, 0.6);
+    font-size: 20px;
+    animation: floatHearts 10s linear infinite;
+}
+
+@keyframes floatHearts {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-1000px) scale(1.5); opacity: 0; }
+}
+
+/* Glass card */
+.container {
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 0 60px rgba(255,0,102,0.3);
+    text-align: center;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Title pulse */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); text-shadow: 0 0 10px #fff; }
+    50% { transform: scale(1.05); text-shadow: 0 0 30px #ff4da6; }
+    100% { transform: scale(1); }
+}
+
+p {
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+button {
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* YES */
+#yes {
+    background: linear-gradient(45deg, #ff4da6, #ff0066);
+    box-shadow: 0 10px 30px rgba(255,0,102,0.6);
+    color: white;
+}
+
+#yes:hover {
+    transform: scale(1.2);
+}
+
+/* NO */
+#no {
+    background: linear-gradient(45deg, #333, #000);
+    color: white;
+}
+
+/* Message */
+.message {
+    margin-top: 25px;
+    font-size: 1.5rem;
+    color: #ff4da6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Romantic Music -->
+<audio autoplay loop>
+    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" type="audio/wav">
+</audio>
+
+<!-- Hearts -->
+<div class="hearts">
+    <span style="left:10%">❤️</span>
+    <span style="left:25%">💖</span>
+    <span style="left:40%">💘</span>
+    <span style="left:60%">💝</span>
+    <span style="left:75%">💕</span>
+    <span style="left:90%">❤️</span>
+</div>
+
+<div class="container">
+    <h1>I’m So Sorry 💔</h1>
+    <p>Please forgive me… you mean everything to me 😔❤️</p>
+
+    <div class="buttons">
+        <button id="yes">Forgive Me 💖</button>
+        <button id="no">No 😢</button>
+    </div>
+
+    <div class="message" id="msg"></div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const msg = document.getElementById("msg");
+
+let scale = 1;
+
+/* NO button crazy effect */
+noBtn.addEventListener("mouseover", () => {
+    scale -= 0.15;
+    if(scale < 0.2) scale = 0.2;
+
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 300 - 150;
+    const rotate = Math.random() * 360;
+
+    noBtn.style.transform = `scale(${scale}) translate(${x}px, ${y}px) rotate(${rotate}deg)`;
+});
+
+/* YES click */
+yesBtn.onclick = () => {
+    msg.innerHTML = "You forgave me 🥹❤️ I love you!";
+    document.body.style.background = "linear-gradient(135deg,#ff4da6,#ff0066)";
+};
+
+/* NO click */
+noBtn.onclick = () => {
+    msg.innerHTML = "Please don’t break my heart 😭💔";
+};
+</script>
+
+</body>
+</html>
